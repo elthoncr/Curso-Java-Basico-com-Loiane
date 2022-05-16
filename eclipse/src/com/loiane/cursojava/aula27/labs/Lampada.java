@@ -3,7 +3,7 @@ package com.loiane.cursojava.aula27.labs;
 public class Lampada {
 
 	/**
-	 *  Escreva uma classe para representar uma lâmpada. Desenvolva métodos para ligar,
+	 *  Escreva uma classe para representar uma lï¿½mpada. Desenvolva mï¿½todos para ligar,
 	 *  desligar a lampada.
 	 * */
 	
@@ -19,7 +19,7 @@ public class Lampada {
 	void imprimeLampada() {
 		
 		System.out.println("Modelo: " + modelo + "\n" +
-				"Tensão: " + tensao + "\n" +
+				"Tensao: " + tensao + "\n" +
 				"Pontencia: " + potencia + "\n");
 		
 	}

@@ -48,35 +48,21 @@ public class ContaCorrente {
 	}
 	
 	//Metodo - Depositar Dinheiro
-	void depositar(double valorParaDepositar) {
+	void depositar(double valorParaDepositar) {		
 		
+		double auxValorDepositar = valorParaDepositar;
+		double vlrSaldoMaisLimite = saldo + limite;
 		
-		
-		
-		saldo = saldo + valorParaDepositar;
-		
-		
-		else if(vlrSacar < vlrSaldoMaisLimite)
-		{
-			cltUsouLimite = vlrSacar - saldo;
-			saldo = 0;
-			auxLimite = limite - cltUsouLimite;
-			limite = auxLimite;
-			usandoLimite = true;
-			System.out.println("\n-------- SAQUE -------");
-			System.out.println("Valor de Saque: " + vlrSacar);
-			System.out.println("Usou de Limite: " + cltUsouLimite);
-			System.out.println("Limite: " + auxLimite  + "\n");
-		} 
-		
-		double vlrDepositar;
-		double vlrSaldoMaisLimite;
-		
-		if (usandoLimite && vlrDepositar > vlrSaldoMaisLimite) {
-			System.out.println("");
+		if (usandoLimite) {
+			
+			if (valorParaDepositar < limite) {
+				
+			}
+			
 			
 		} 
 		else if (!usandoLimite) {
+			saldo = saldo + valorParaDepositar;
 			System.out.println("\n------ DEPOSITO ------");
 			System.out.println("Depositou: " + valorParaDepositar);
 			System.out.println("Saldo CC+L: " + saldoMaisLimite() + "\n");
