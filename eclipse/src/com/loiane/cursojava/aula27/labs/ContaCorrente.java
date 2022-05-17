@@ -4,78 +4,49 @@ public class ContaCorrente {
 
 	int numeroConta;
 	String nomeCliente;
+	String agencia;
 	double saldo;
-	boolean statusContaEspecial;
-	double limite;
-	boolean usandoLimite;
+	boolean especial;
+	double limiteEspecial;
+	double valorEspecialUsado;
 	
 	//Metodo - sacar - verifica se cliente pode sacar dinheiro.
-	//Se cliente tem saldo e o valor para sacar é menor do que o disponivel na conta, o cliente saca.
-	//Senão Se 
-	void sacar(double vlrSacar) {
+	boolean sacar(double quantiaASacar) {
 		
-		//double auxVlrParaSacar = vlrSacar;
-		double vlrSaldoMaisLimite = saldo + limite;
-		double cltUsouLimite = 0;
-		//double sobraDivida = 0;
-		double auxLimite = 0;
-		
-		if (vlrSacar <= saldo) 
+		//Tem saldo na Conta
+		if (saldo >= quantiaASacar) 
 		{
-			saldo = saldo - vlrSacar;
-			System.out.println("\n-------- SAQUE -------");
-			System.out.println("Valor de Saque: " + vlrSacar);
-			System.out.println("Saldo CC+L: " + saldoMaisLimite() + "\n");
-		} 
-		else if(vlrSacar < vlrSaldoMaisLimite)
-		{
-			cltUsouLimite = vlrSacar - saldo;
-			saldo = 0;
-			auxLimite = limite - cltUsouLimite;
-			limite = auxLimite;
-			usandoLimite = true;
-			System.out.println("\n-------- SAQUE -------");
-			System.out.println("Valor de Saque: " + vlrSacar);
-			System.out.println("Usou de Limite: " + cltUsouLimite);
-			System.out.println("Limite: " + auxLimite  + "\n");
-		} 
-		else 
-		{
-			System.out.println("\n-------- SAQUE -------");
-			System.out.println("Valor é maior que o saldo disponivel em sua conta.");
-			System.out.println("Saldo CC+L: " + saldoMaisLimite() + "\n");
+			saldo -= quantiaASacar;
+			return true;
+		} else { //não tem saldo na conta
+			if (especial) {
+				//verifica se o limite especial tem saldo
+				double limite = limiteEspecial + saldo;
+				if (limite >= quantiaASacar) {
+					saldo -= quantiaASacar;
+					return true;
+				} else {
+					return false;
+				}
+			} else {
+				return false; //não é especial e não tem saldo suficiente.
+			}
 		}
+		
 	}
 	
 	//Metodo - Depositar Dinheiro
-	void depositar(double valorParaDepositar) {		
+	void depositar(double valorDepositado) {		
 		
-		double auxValorDepositar = valorParaDepositar;
-		double vlrSaldoMaisLimite = saldo + limite;
-		
-		if (usandoLimite) {
-			
-			if (valorParaDepositar < limite) {
-				
-			}
-			
-			
-		} 
-		else if (!usandoLimite) {
-			saldo = saldo + valorParaDepositar;
-			System.out.println("\n------ DEPOSITO ------");
-			System.out.println("Depositou: " + valorParaDepositar);
-			System.out.println("Saldo CC+L: " + saldoMaisLimite() + "\n");
-		}
-		else {
-			System.out.println("");
-		}
-		
+		saldo += valorDepositado;
+		System.out.println("\n------ DEPOSITO ------");
+		System.out.println("Depositou: " + valorDepositado);
+		System.out.println("Saldo CC+L: " + saldoMaisLimite() + "\n");
 		
 	}
 	
 	//Metodo - Consultar Saldo
-	void consultaSaldo() {
+	void consultarSaldo() {
 		System.out.println("Saldo: " + saldo);
 	}
 	
@@ -84,41 +55,28 @@ public class ContaCorrente {
 		System.out.println("------ EXTRATO ------");
 		System.out.println("Conta: " + numeroConta);
 		System.out.println("Cliente: " + nomeCliente);
-		consultaSaldo();
+		consultarSaldo();
 		consultaChequeEspecial();
 		System.out.println("Saldo CC+L: " + saldoMaisLimite() + "\n");
 	}
 	
 	//Metodo - Verificar se o Cliente esta usando Cheque Especial.
 	void consultaChequeEspecial() {
-		System.out.println("Cheque Especial: " + limite);
+		System.out.println("Cheque Especial: " + valorEspecialUsado);
 	}
 	
-	//Metodo - Usar Cheque Especial
-	void usarChequeEspecial(double valorParaUsarChequeEspecial) {
-		
-		if(valorParaUsarChequeEspecial > limite) {
-			System.out.println("\n-------- CHEQUE ESPECIAL -------");
-			System.out.println("O valor informado e maior que o valor disponivel em sua conta.");
-			System.out.println("Valor informado: " + valorParaUsarChequeEspecial);
-			System.out.println("Saldo CC+L: " + saldoMaisLimite() + "\n");
-		} else {
-			System.out.println("\n-------- CHEQUE ESPECIAL -------");
-			limite = limite - valorParaUsarChequeEspecial;
-			System.out.println("Usei o cheque especial.");
-			System.out.println("Usou de Limite: " + valorParaUsarChequeEspecial);
-			System.out.println("Saldo CC+L: " + saldoMaisLimite() + "\n");
-		}
-				
-	}
 	
 	// Metodo retorna Saldo + Limite em conta.
 	double saldoMaisLimite() {
 		
-		double saldoMaisLimiteC = saldo + limite;
+		double saldoMaisLimiteC = saldo + valorEspecialUsado;
 		
 		return saldoMaisLimiteC;
 	}
 	
+	
+	boolean verificarUsoChequeEspecial() {
+		return saldo < 0;
+	}
 	
 }
