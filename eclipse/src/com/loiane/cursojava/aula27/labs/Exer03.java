@@ -40,6 +40,8 @@ public class Exer03 {
 			}
 		}
 		
+		aluno1.mostrarInfo();
+		
 		//double media = aluno1.notasDisciplinas[0][0];
 		
 		//System.out.println(media);
