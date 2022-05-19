@@ -4,8 +4,8 @@ public class Aluno {
 
 	String nome;
 	String matricula;
-	String cursoMatriculado;
-	String[] disciplinas;
-	double[] notas;
+	String nomeCurso;
+	String[] nomeDisciplinas;
+	double[][] notasDisciplinas;
 	
 }
