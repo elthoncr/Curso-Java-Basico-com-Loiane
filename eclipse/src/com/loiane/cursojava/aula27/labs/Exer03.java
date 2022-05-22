@@ -12,20 +12,20 @@ public class Exer03 {
 		Scanner scan = new Scanner(System.in);
 
 		System.out.println("Entre com o nome do aluno");
-		aluno1.nome = scan.next();
+		aluno1.nome = scan.nextLine();
 
 		System.out.println("Entre com o nome do curso");
-		aluno1.nomeCurso = scan.next();
+		aluno1.nomeCurso = scan.nextLine();
 
 		System.out.println("Entre com a matricula");
-		aluno1.matricula = scan.next();
+		aluno1.matricula = scan.nextLine();
 
 		aluno1.nomeDisciplinas = new String[3];
 
 		// Lendo nome das disciplinas.
 		for (int i = 0; i < aluno1.nomeDisciplinas.length; i++) {
 			System.out.println("Digite a Disciplina" + "[ " + (i + 1) + " ]");
-			aluno1.nomeDisciplinas[i] = scan.next();
+			aluno1.nomeDisciplinas[i] = scan.nextLine();
 		}
 
 		// Declarando e instanciando array bidimensional notasDisciplinas
