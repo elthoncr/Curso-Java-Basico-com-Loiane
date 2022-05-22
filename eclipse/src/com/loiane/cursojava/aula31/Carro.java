@@ -8,6 +8,9 @@ public class Carro {
 	double capCombustivel;
 	private double consumoCombustivel;
 	
+	public Carro() {
+		
+	}
 
 	public void exibirAutonomia() {
 		System.out.println("A autonomia do carro e: " + this.capCombustivel * this.consumoCombustivel + "km");
@@ -21,7 +24,7 @@ public class Carro {
 	}
 	
 	private double divideKMPorConsumoCombustivel (double km) {		
-		return km / this.consumoCombustivel;
+		return (km / this.consumoCombustivel);
 	}
 
 	public double calcularCombustivel(double km) {

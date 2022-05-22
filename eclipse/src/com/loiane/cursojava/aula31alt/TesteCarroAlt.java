@@ -2,7 +2,7 @@ package com.loiane.cursojava.aula31alt;
 
 import com.loiane.cursojava.aula31.Carro;
 
-public class TesteCarro {
+public class TesteCarroAlt {
 
 	public static void main(String[] args) {
 
@@ -10,6 +10,7 @@ public class TesteCarro {
 		
 		carro1.marca = "Fiat";
 		carro1.calcularCombustivel(10);
+		carro1.calcularCombustivel(50);
 		
 	}
 
