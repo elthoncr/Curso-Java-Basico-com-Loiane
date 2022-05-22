@@ -12,6 +12,7 @@ public class TesteCarro {
 		
 		//System.out.println("Marca: " + carro1.marca + "\nModelo: " + carro1.modelo + "\nnumPassag: " + carro1.numPassageiros);
 
+		
 	}
 
 }
